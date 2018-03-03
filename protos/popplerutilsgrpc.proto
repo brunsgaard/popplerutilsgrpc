@@ -5,7 +5,7 @@ option java_package = "popplerutilsgrpc";
 option java_outer_classname = "PopplerUtilsGrpcProto";
 option objc_class_prefix = "PUG";
 
-package popplerutils;
+package popplerutilsgrpc;
 
 // The greeting service definition.
 service PopplerUtils {
