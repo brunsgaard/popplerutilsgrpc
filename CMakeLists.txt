@@ -16,7 +16,7 @@ else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++14 support. Please use a different C++ compiler.")
 endif()
 
-pkg_search_module(POPPLERCPP REQUIRED QUIET poppler-cpp>=0.62.0)
+pkg_search_module(POPPLERCPP REQUIRED QUIET poppler-cpp)
 
 add_executable(hello_cmake src/main.cpp)
 
