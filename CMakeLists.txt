@@ -43,6 +43,7 @@ pkg_search_module(GRPC REQUIRED QUIET grpc)
 
 set(PROTOS
     ${CMAKE_CURRENT_SOURCE_DIR}/protos/helloworld.proto
+    ${CMAKE_CURRENT_SOURCE_DIR}/protos/popplerutilsgrpc.proto
 )
 
 set(PROTO_SRC_DIR ${CMAKE_CURRENT_BINARY_DIR}/proto-src)
@@ -58,9 +59,16 @@ add_executable(greeter_server
     ${PROTO_SRCS}
     ${GRPC_SRCS}
 )
+
+# Include the boost headers
+target_include_directories(greeter_server
+    PRIVATE ${POPPLERCPP_INCLUDE_DIRS}
+)
+
 target_link_libraries(greeter_server
     gRPC::grpc++_reflection
     protobuf::libprotobuf
+    ${POPPLERCPP_LIBRARY}
 )
 
 # Building client
@@ -69,7 +77,14 @@ add_executable(greeter_client
     ${PROTO_SRCS}
     ${GRPC_SRCS}
 )
+
+# Include the boost headers
+target_include_directories(greeter_client
+    PRIVATE ${POPPLERCPP_INCLUDE_DIRS}
+)
+
 target_link_libraries(greeter_client
     gRPC::grpc++_reflection
     protobuf::libprotobuf
+    ${POPPLERCPP_LIBRARY}
 )

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "popplerutilsgrpc";
+option java_outer_classname = "PopplerUtilsGrpcProto";
+option objc_class_prefix = "PUG";
+
+package popplerutils;
+
+// The greeting service definition.
+service PopplerUtils {
+  // Sends a greeting
+  rpc pdftoppm (PdftoppmRequest) returns (stream PdftoppmReply) {}
+}
+
+// The request message containing the user's name.
+message PdftoppmRequest {
+  string inputBytes = 1;
+}
+
+// The response message containing the greetings
+message PdftoppmReply {
+  string imageBytes = 1;
+  int32 imageNumber = 2;
+}
